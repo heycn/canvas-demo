@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas");
+
+        // 设置屏幕高度 获取的是文档的高度
+        canvas.width = document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight;
+
+        // copy的一些样式
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = "black";
+        ctx.strokeStyle = 'none';
+
+        // 鼠标按下事件
+        let painting = false;
+        canvas.onmousedown = () => {
+            painting = true;
+        }
+
+        // 跟随鼠标按下的坐标
+        canvas.onmousemove = (e) => {
+            if (painting === true) {
+                ctx.beginPath();
+                ctx.arc(e.clientX, e.clientY, 6, 0, 2 * Math.PI)
+                ctx.stroke();
+                ctx.fill();
+            } else {
+                console.log('啥也不做');
+            }
+        }
+        // 鼠标松开是不做事情
+        canvas.onmouseup = () => {
+            painting = false;
+        }
+    </script>
+</body>
+
+</html>

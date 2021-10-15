@@ -6,6 +6,7 @@ canvas.height = document.documentElement.clientHeight;
 // copy的一些样式
 let ctx = canvas.getContext("2d");
 ctx.fillStyle = "black";
+ctx.strokeStyle = "gray";
 ctx.lineCap = "round";
 ctx.lineWidth = 4;
 
